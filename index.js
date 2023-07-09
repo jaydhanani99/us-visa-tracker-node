@@ -54,7 +54,7 @@ async function main(currentBookedDate) {
       }
       log("no dates available")
       
-      await sleep(60*60*3)
+      await sleep(60*60*3*1000)
     }
 
   } catch(err) {
