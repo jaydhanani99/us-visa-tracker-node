@@ -27,7 +27,6 @@ async function main(currentBookedDate) {
 
   log(`Initializing with current date ${currentBookedDate}`)
 
-  try {
     const sessionHeaders = await login()
 
     while(true) {
@@ -36,7 +35,6 @@ async function main(currentBookedDate) {
 
         console.log(x[0])
         const date = await checkAvailableDate(sessionHeaders, x[0])
-        var isDateAvail = date > currentBookedDate;
         if (!date) {
           log("no dates available")
         } else if (date > currentBookedDate) {
@@ -48,21 +46,9 @@ async function main(currentBookedDate) {
         }
 
       }
-
-      if(isDateAvail) {
-        process.exit(0)
-      }
-      log("no dates available")
-      
-      await sleep(60*60*3*1000)
+      await sleep(60*60*3*1000);
+      main(currentBookedDate)
     }
-
-  } catch(err) {
-    console.error(err)
-    log("Trying again")
-
-    main(currentBookedDate)
-  }
 }
 
 async function login() {
