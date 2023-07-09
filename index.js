@@ -177,5 +177,5 @@ const sendMail = async (appointmentList) => {
   console.log(`Email sent with messageId: ${info.messageId}`);
 };
 
-const currentBookedDate = '2025-10-09'
+const currentBookedDate = '2023-10-09'
 main(currentBookedDate)
