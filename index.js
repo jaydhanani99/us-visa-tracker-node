@@ -169,7 +169,7 @@ const transporter = nodemailer.createTransport({
 const sendMail = async (appointmentList) => {
   const info = await transporter.sendMail({
     from: 'uptechnotricks@gmail.com',
-    to: ['jaydhanani36.jd@gmail.com'],
+    to: ['rajpatel99ladol@gmail.com'],
     subject: 'US Visa Appointment Availabilities in Canada',
     text: JSON.stringify(appointmentList, null, 2)
   });
