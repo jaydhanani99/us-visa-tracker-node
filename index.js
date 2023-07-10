@@ -46,7 +46,7 @@ async function main(currentBookedDate) {
         }
 
       }
-      await sleep(60*60*3*1000);
+      await sleep(60*60*3);
       main(currentBookedDate)
     }
 }
