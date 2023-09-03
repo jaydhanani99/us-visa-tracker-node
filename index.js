@@ -29,25 +29,21 @@ async function main(currentBookedDate) {
 
     const sessionHeaders = await login()
 
-    while(true) {
 
-      for(const x of PROVINCES.entries()) {
+    for(const x of PROVINCES.entries()) {
 
-        console.log(x[0])
-        const date = await checkAvailableDate(sessionHeaders, x[0])
-        if (!date) {
-          log("no dates available")
-        } else if (date > currentBookedDate) {
-          log(`nearest date is further than already booked (${currentBookedDate} vs ${date} in ${x[1]})`)
-        } else {
-          currentBookedDate = date
-          await sendMail(`earlier date available at ${date} in ${x[1]}`)
-          log(`earlier date available at ${date} in ${x[1]}`)
-        }
-
+      console.log(x[0])
+      const date = await checkAvailableDate(sessionHeaders, x[0])
+      if (!date) {
+        log("no dates available")
+      } else if (date > currentBookedDate) {
+        log(`nearest date is further than already booked (${currentBookedDate} vs ${date} in ${x[1]})`)
+      } else {
+        currentBookedDate = date
+        await sendMail(`earlier date available at ${date} in ${x[1]}`)
+        log(`earlier date available at ${date} in ${x[1]}`)
       }
-      await sleep(60*60*3);
-      main(currentBookedDate)
+
     }
 }
 
